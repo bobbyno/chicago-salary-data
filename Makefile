@@ -7,8 +7,8 @@ SHELL := /usr/bin/env bash
 #################################################################################
 
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-
 PROJECT_NAME = chicago-salaries
+raw = data/raw/chicago-salaries.csv
 
 
 #################################################################################
@@ -24,6 +24,7 @@ requirements: env-test
 clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
+	rm -f $(raw)
 
 ## Set up python interpreter environment
 env-create:
@@ -43,7 +44,12 @@ env-test:
 #################################################################################
 
 data-import:
-	echo Import the data from the original source
+	wget -O $(raw) https://data.cityofchicago.org/api/views/xzkq-xp2w/rows.csv?accessType=DOWNLOAD&api_foundry=true
+
+data-preview:
+	head $(raw)
+	tail $(raw)
+	wc -l $(raw)
 
 data-process:
 	python src/data/raw_to_processed.py
