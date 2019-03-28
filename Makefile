@@ -16,7 +16,7 @@ raw = data/raw/chicago-salaries.csv
 #################################################################################
 
 ## Install Python Dependencies
-requirements: env-test
+requirements:
 	python -m pip install -U pip setuptools wheel
 	python -m pip install -r requirements.txt
 
