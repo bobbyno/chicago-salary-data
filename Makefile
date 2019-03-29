@@ -9,7 +9,7 @@ SHELL := /usr/bin/env bash
 PROJECT_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 PROJECT_NAME = chicago-salaries
 raw = data/raw/chicago-salaries.csv
-processed = data/raw/chicago-salaries-processed.csv
+processed = data/processed/chicago-salaries-processed.csv
 
 
 #################################################################################
@@ -53,6 +53,7 @@ data-preview:
 	wc -l $(raw)
 
 data-raw-to-processed:
+	rm -f $(processed)
 	python src/data/raw_to_processed.py $(raw) $(processed)
 	py.test
 

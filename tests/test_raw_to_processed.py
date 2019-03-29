@@ -14,6 +14,11 @@ def test_lowercase_column_names(clean_data):
     assert 'department' in cols
 
 
+def test_no_salary_column(clean_data):
+    print(clean_data.columns)
+    assert 'annual_salary' not in clean_data.columns
+
+
 def test_names(clean_data):
     assert not clean_data.first_name.isna().any()
     assert not clean_data.middle_name.isna().any()

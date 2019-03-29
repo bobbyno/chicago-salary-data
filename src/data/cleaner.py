@@ -70,4 +70,7 @@ def clean(input_filepath):
     # gender
     data = data.assign(gender=[consolidated_gender(n) for n in data.first_name])
 
+    # drop columns with NaN values
+    data = data.drop(['annual_salary'], axis=1)
+
     return data
