@@ -1,6 +1,6 @@
 SHELL := /usr/bin/env bash
 
-.PHONY: clean data-import data-process src-lint src-test requirements
+.PHONY: clean data-import data-preview data-raw-to-processed src-lint src-test requirements
 
 #################################################################################
 # GLOBALS                                                                       #
